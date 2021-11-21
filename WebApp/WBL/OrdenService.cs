@@ -8,7 +8,7 @@ using Entity;
 
 namespace WBL
 {
-    public interface IProductoService
+    public interface IOrdenService
     {
         Task<DBEntity> Create(ProductoEntity entity);
         Task<DBEntity> Delete(ProductoEntity entity);
@@ -19,11 +19,11 @@ namespace WBL
         Task<IEnumerable<ProductoEntity>> GetLista();
     }
 
-    public class ProductoService : IProductoService
+    public class OrdenService : IOrdenService
     {
         private readonly IDataAccess sql;
 
-        public ProductoService(IDataAccess _sql)
+        public OrdenService(IDataAccess _sql)
         {
             sql = _sql;
         }
@@ -174,15 +174,3 @@ namespace WBL
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
