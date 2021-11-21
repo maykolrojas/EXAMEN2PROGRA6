@@ -1,6 +1,6 @@
 "use strict";
-var ProductoEdit;
-(function (ProductoEdit) {
+var OrdenEdit;
+(function (OrdenEdit) {
     var Formulario = new Vue({
         data: {
             Formulario: "#FormEdit"
@@ -10,5 +10,5 @@ var ProductoEdit;
         }
     });
     Formulario.$mount("#AppEdit");
-})(ProductoEdit || (ProductoEdit = {}));
+})(OrdenEdit || (OrdenEdit = {}));
 //# sourceMappingURL=Edit.js.map

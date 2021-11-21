@@ -37,7 +37,7 @@ namespace WBL
         {
             try
             {
-                var result = sql.QueryAsync<ProductoEntity>("db.ProductoObtener", "IdProducto");
+                var result = sql.QueryAsync<ProductoEntity>(sp: "db.ProductoObtener", "IdProducto");
 
                 return await result;
             }
@@ -71,7 +71,7 @@ namespace WBL
         {
             try
             {
-                var result = sql.QueryFirstAsync<ProductoEntity>("db.ProductoObtener", new
+                var result = sql.QueryFirstAsync<ProductoEntity>(sp:"db.ProductoObtener", new
                 { entity.IdProducto });
 
                 return await result;
@@ -90,7 +90,7 @@ namespace WBL
         {
             try
             {
-                var result = sql.ExecuteAsync("db.ProductoInsertar", new
+                var result = sql.ExecuteAsync(sp:"db.ProductoInsertar", new
                 {
 
 
@@ -117,7 +117,7 @@ namespace WBL
         {
             try
             {
-                var result = sql.ExecuteAsync("db.ProductoActualizar", new
+                var result = sql.ExecuteAsync(sp: "db.ProductoActualizar", new
                 {
                     entity.IdProducto,
                     entity.NombreProducto,
@@ -140,7 +140,7 @@ namespace WBL
         {
             try
             {
-                var result = sql.ExecuteAsync("db.ProductoEliminar", new
+                var result = sql.ExecuteAsync(sp: "db.ProductoEliminar", new
                 {
                     entity.IdProducto,
 

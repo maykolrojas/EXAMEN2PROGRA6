@@ -1,4 +1,4 @@
-﻿namespace ProductoEdit {
+﻿namespace OrdenEdit {
     var Formulario = new Vue(
         {
             data:
