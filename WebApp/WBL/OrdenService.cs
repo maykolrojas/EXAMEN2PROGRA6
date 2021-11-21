@@ -10,16 +10,23 @@ namespace WBL
 {
     public interface IOrdenService
     {
-        Task<DBEntity> Create(ProductoEntity entity);
-        Task<DBEntity> Delete(ProductoEntity entity);
-        Task<IEnumerable<ProductoEntity>> Get();
-        Task<ProductoEntity> GetById(ProductoEntity entity);
-        Task<DBEntity> Update(ProductoEntity entity);
+        Task<DBEntity> Create(OrdenEntity entity);
+        Task<DBEntity> Delete(OrdenEntity entity);
+        Task<IEnumerable<OrdenEntity>> Get();
+        Task<ProductoEntity> GetById(OrdenEntity entity);
+        Task<DBEntity> Update(OrdenEntity entity);
 
-        Task<IEnumerable<ProductoEntity>> GetLista();
+        Task<IEnumerable<OrdenEntity>> GetLista();
     }
 
-    public class OrdenService : IOrdenService
+
+
+
+
+
+
+
+    public class OrdenService
     {
         private readonly IDataAccess sql;
 
@@ -33,11 +40,11 @@ namespace WBL
         //Metodo Get
 
 
-        public async Task<IEnumerable<ProductoEntity>> Get()
+        public async Task<IEnumerable<OrdenEntity>> Get()
         {
             try
             {
-                var result = sql.QueryAsync<ProductoEntity>("db.ProductoObtener", "IdProducto");
+                var result = sql.QueryAsync<OrdenEntity>("db.OrdenObtener", "IdOrden");
 
                 return await result;
             }
@@ -50,12 +57,13 @@ namespace WBL
 
         }
 
-        public async Task<IEnumerable<ProductoEntity>> GetLista()
+
+        public async Task<IEnumerable<OrdenEntity>> GetLista()
         {
 
             try
             {
-                var result = sql.QueryAsync<ProductoEntity>("ProductoLista");
+                var result = sql.QueryAsync<OrdenEntity>("OrdenLista");
 
                 return await result;
             }
@@ -67,12 +75,12 @@ namespace WBL
         }
 
         //Metodo GetById
-        public async Task<ProductoEntity> GetById(ProductoEntity entity)
+        public async Task<OrdenEntity> GetById(OrdenEntity entity)
         {
             try
             {
-                var result = sql.QueryFirstAsync<ProductoEntity>("db.ProductoObtener", new
-                { entity.IdProducto });
+                var result = sql.QueryFirstAsync<OrdenEntity>("db.OrdenObtener", new
+                { entity.IdOrden });
 
                 return await result;
             }
@@ -86,16 +94,16 @@ namespace WBL
 
         //Metodo Create
 
-        public async Task<DBEntity> Create(ProductoEntity entity)
+        public async Task<DBEntity> Create(OrdenEntity entity)
         {
             try
             {
-                var result = sql.ExecuteAsync("db.ProductoInsertar", new
+                var result = sql.ExecuteAsync("db.OrdenInsertar", new
                 {
 
 
-                    entity.NombreProducto,
-                    entity.PrecioProducto
+                    entity.CantidadProducto,
+                    entity.Estado
 
 
 
@@ -113,15 +121,15 @@ namespace WBL
         }
 
         //Metodo Update
-        public async Task<DBEntity> Update(ProductoEntity entity)
+        public async Task<DBEntity> Update(OrdenEntity entity)
         {
             try
             {
-                var result = sql.ExecuteAsync("db.ProductoActualizar", new
+                var result = sql.ExecuteAsync("db.OrdenActualizar", new
                 {
-                    entity.IdProducto,
-                    entity.NombreProducto,
-                    entity.PrecioProducto
+                    entity.IdOrden,
+                    entity.CantidadProducto,
+                    entity.Estado
 
                 });
 
@@ -136,13 +144,13 @@ namespace WBL
         }
 
         //Metodo Delete
-        public async Task<DBEntity> Delete(ProductoEntity entity)
+        public async Task<DBEntity> Delete(OrdenEntity entity)
         {
             try
             {
-                var result = sql.ExecuteAsync("db.ProductoEliminar", new
+                var result = sql.ExecuteAsync("db.OrdenEliminar", new
                 {
-                    entity.IdProducto,
+                    entity.IdOrden,
 
 
 
@@ -166,11 +174,7 @@ namespace WBL
 
 
 
-
-
         #endregion
-
-
 
     }
 }

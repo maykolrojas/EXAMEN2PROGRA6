@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    class OrdenEntity
+   public  class OrdenEntity
     {
         public int? IdOrden { get; set; }
         //  public int? IdTipoIdentificacion { get; set; }
